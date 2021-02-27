@@ -1,35 +1,11 @@
 import 'package:flutter/material.dart';
-import 'component/Button.dart';
-import 'component/InputField.dart';
+import 'package:urban/component/Button.dart';
+import 'package:urban/component/InputField.dart';
 
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatefulWidget {
-  MyApp({Key key}) : super(key: key);
-
-  @override
-  _MyAppState createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        primaryColor: Colors.black,
-        accentColor: Colors.white,
-        // backgroundColor: Colors.black,
-      ),
-      home: LoginPage(),
-    );
-  }
-}
-
-class LoginPage extends StatelessWidget {
-  LoginPage({Key key}) : super(key: key);
+class RegisterPage extends StatelessWidget {
   final TextEditingController ctrl = TextEditingController();
+  RegisterPage({Key key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,7 +43,27 @@ class LoginPage extends StatelessWidget {
                         borderRadius: 4,
                         textColor: Colors.white,
                         bgColor: Colors.white.withOpacity(0.5),
+                        hintText: "Username",
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 8, left: 16, right: 16),
+                      child: InputField(
+                        controller: ctrl,
+                        borderRadius: 4,
+                        textColor: Colors.white,
+                        bgColor: Colors.white.withOpacity(0.5),
                         hintText: "Email",
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 8, left: 16, right: 16),
+                      child: InputField(
+                        controller: ctrl,
+                        borderRadius: 4,
+                        textColor: Colors.white,
+                        bgColor: Colors.white.withOpacity(0.5),
+                        hintText: "Mobile",
                       ),
                     ),
                     Padding(
@@ -82,10 +78,39 @@ class LoginPage extends StatelessWidget {
                       ),
                     ),
                     Padding(
+                      padding: EdgeInsets.only(top: 8, left: 16, right: 16),
+                      child: InputField(
+                        controller: ctrl,
+                        borderRadius: 4,
+                        textColor: Colors.white,
+                        bgColor: Colors.white.withOpacity(0.5),
+                        isPassword: true,
+                        hintText: "Password",
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Align(
+                        alignment: Alignment.centerRight,
+                        child: TextButton(
+                          onPressed: () {
+                            print(ctrl.text);
+                          },
+                          child: Text(
+                            "Forget Password?",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16.0),
                       child: Button1(
                         onPressed: () {},
-                        text: "Register".toUpperCase(),
+                        text: "Login".toUpperCase(),
                         height: 54,
                       ),
                     ),
@@ -98,9 +123,9 @@ class LoginPage extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(vertical: 8.0),
                   child: MixedButton(
                     onPressed: () {},
-                    text: "Already have account?",
+                    text: "Don't have account?",
                     textColor: Colors.white.withOpacity(0.7),
-                    clickText: "SignIn here",
+                    clickText: "SignUp here",
                     clickColor: Colors.blue,
                   ),
                 ),
