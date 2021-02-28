@@ -41,7 +41,7 @@ class OtpVarification extends StatelessWidget {
                       borderRadius: 4,
                       textColor: Colors.white,
                       bgColor: Colors.white.withOpacity(0.5),
-                      hintText: "Otp",
+                      hintText: "OTP",
                     ),
                   ),
                   Padding(

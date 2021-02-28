@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:urban/view/Auth/ForgetPassOtp.dart';
 import 'package:urban/view/Auth/Register.dart';
 import 'component/Button.dart';
 import 'component/InputField.dart';
@@ -86,7 +87,13 @@ class LoginPage extends StatelessWidget {
                       alignment: Alignment.centerRight,
                       child: TextButton(
                         onPressed: () {
-                          print(ctrl.text);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  ForgetPassOtp(),
+                            ),
+                          );
                         },
                         child: Text(
                           "Forget Password?",
