@@ -21,7 +21,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        primaryColor: Colors.black,
+        primaryColor: Color(0xff040077),
         accentColor: Colors.white,
         // backgroundColor: Colors.black,
       ),

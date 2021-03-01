@@ -25,6 +25,13 @@ class _NavigatorPageState extends State<NavigatorPage> {
         return "Home";
       case 1:
         return "Category";
+      case 2:
+        return "Offers";
+      case 3:
+        return "Orders";
+      case 4:
+        return "Settings";
+
       default:
         return "null";
     }
@@ -44,6 +51,27 @@ class _NavigatorPageState extends State<NavigatorPage> {
             child: Text("category"),
           ),
         );
+      case 2:
+        return AnimatedSwitcher(
+          duration: Duration(milliseconds: 5),
+          child: Center(
+            child: Text("Offers"),
+          ),
+        );
+      case 3:
+        return AnimatedSwitcher(
+          duration: Duration(milliseconds: 5),
+          child: Center(
+            child: Text("Orders"),
+          ),
+        );
+      case 4:
+        return AnimatedSwitcher(
+          duration: Duration(milliseconds: 5),
+          child: Center(
+            child: Text("Settings"),
+          ),
+        );
       default:
         return Text("null");
     }
@@ -59,19 +87,46 @@ class _NavigatorPageState extends State<NavigatorPage> {
         child: pageController(index),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        selectedIconTheme: IconThemeData(
+          color: Colors.white,
+        ),
+        selectedItemColor: Colors.white,
+        showUnselectedLabels: false,
+        unselectedIconTheme: IconThemeData(color: Colors.white),
+        backgroundColor: Color(0xff040077),
         currentIndex: index,
         onTap: setIndex,
         items: [
           BottomNavigationBarItem(
+            backgroundColor: Colors.white,
             label: "Home",
             icon: Icon(
-              Icons.home,
+              Icons.home_outlined,
             ),
           ),
           BottomNavigationBarItem(
             label: "Category",
             icon: Icon(
-              Icons.category,
+              Icons.category_outlined,
+            ),
+          ),
+          BottomNavigationBarItem(
+            label: "Offer",
+            icon: Icon(
+              Icons.local_offer_outlined,
+            ),
+          ),
+          BottomNavigationBarItem(
+            label: "Bookings",
+            icon: Icon(
+              Icons.bookmark_border_outlined,
+            ),
+          ),
+          BottomNavigationBarItem(
+            label: "Setting",
+            icon: Icon(
+              Icons.settings_outlined,
             ),
           ),
         ],
