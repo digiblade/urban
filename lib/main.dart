@@ -3,6 +3,7 @@ import 'package:urban/view/Auth/ForgetPassOtp.dart';
 import 'package:urban/view/Auth/Register.dart';
 import 'component/Button.dart';
 import 'component/InputField.dart';
+import 'view/Navigator.dart';
 
 void main() {
   runApp(MyApp());
@@ -108,8 +109,15 @@ class LoginPage extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     child: Button1(
-                      onPressed: () {},
-                      text: "Register".toUpperCase(),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (BuildContext context) => NavigatorPage(),
+                          ),
+                        );
+                      },
+                      text: "Login".toUpperCase(),
                       height: 54,
                     ),
                   ),
