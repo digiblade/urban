@@ -20,7 +20,7 @@ class WelcomeCard extends StatelessWidget {
       child: Container(
         width: double.infinity,
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -35,17 +35,32 @@ class WelcomeCard extends StatelessWidget {
               if (welcomeMsg != null)
                 Padding(
                   padding: const EdgeInsets.only(top: 8.0),
-                  child: Text(welcomeMsg),
+                  child: Text(
+                    welcomeMsg,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
               if (msg != null)
                 Padding(
                   padding: const EdgeInsets.only(top: 8.0),
-                  child: Text(msg),
+                  child: Text(
+                    msg,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
               if (greetings != null)
                 Padding(
                   padding: const EdgeInsets.only(top: 8.0),
-                  child: Text(greetings),
+                  child: Text(
+                    greetings,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
             ],
           ),
