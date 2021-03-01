@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../component/WelcomeCard.dart';
 
 class Home extends StatefulWidget {
   Home({Key key}) : super(key: key);
@@ -15,26 +16,11 @@ class _HomeState extends State<Home> {
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16),
-            child: Card(
-              shadowColor: Color(0xff040077),
-              child: Container(
-                width: double.infinity,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        "Hey User,",
-                        style: TextStyle(
-                          fontSize: 32,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+            child: WelcomeCard(
+              mentioned: "Hey User,",
+              welcomeMsg: "Welcome to our app.",
+              msg: "Please feel free to use it anytime.",
+              greetings: "Thank you",
             ),
           )
         ],
