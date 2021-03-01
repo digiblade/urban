@@ -27,7 +27,7 @@ class _HomeState extends State<Home> {
                       child: Text(
                         "Hey User,",
                         style: TextStyle(
-                          fontSize: 20,
+                          fontSize: 32,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
