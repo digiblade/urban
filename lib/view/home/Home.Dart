@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:urban/component/ProductCard.dart';
 import '../../component/WelcomeCard.dart';
 
 class Home extends StatefulWidget {
@@ -51,80 +52,38 @@ class _HomeState extends State<Home> {
             crossAxisSpacing: 10,
             mainAxisSpacing: 10,
             children: [
-              ProductCard(),
-              Card(
-                child: Center(
-                  child: Text("hello"),
-                ),
+              ProductCard(
+                onClick: () {},
+                imageUrl: "https://digiblade.in/urban/assets/product/tiles.jpg",
+                productName: "Tiles",
               ),
-              Card(
-                child: Center(
-                  child: Text("hello"),
-                ),
+              ProductCard(
+                onClick: () {},
+                imageUrl: "https://digiblade.in/urban/assets/product/tiles.jpg",
+                productName: "Tiles",
               ),
-              Card(
-                child: Center(
-                  child: Text("hello"),
-                ),
+              ProductCard(
+                onClick: () {},
+                imageUrl: "https://digiblade.in/urban/assets/product/tiles.jpg",
+                productName: "Tiles",
               ),
-              Card(
-                child: Center(
-                  child: Text("hello"),
-                ),
+              ProductCard(
+                onClick: () {},
+                imageUrl: "https://digiblade.in/urban/assets/product/tiles.jpg",
+                productName: "Tiles",
               ),
-              Card(
-                child: Center(
-                  child: Text("hello"),
-                ),
+              ProductCard(
+                onClick: () {},
+                imageUrl: "https://digiblade.in/urban/assets/product/tiles.jpg",
+                productName: "Tiles",
+              ),
+              ProductCard(
+                onClick: () {},
+                imageUrl: "https://digiblade.in/urban/assets/product/tiles.jpg",
+                productName: "Tiles",
               ),
             ],
           ),
-        ],
-      ),
-    );
-  }
-}
-
-class ProductCard extends StatelessWidget {
-  const ProductCard({Key key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(borderRadius: BorderRadius.circular(16)),
-      child: Stack(
-        children: [
-          Image.network(
-            "https://digiblade.in/urban/assets/product/tiles.jpg",
-            height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width,
-            fit: BoxFit.cover,
-          ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Container(
-              height: (32),
-              width: MediaQuery.of(context).size.width,
-              decoration: BoxDecoration(
-                color: Colors.black.withOpacity(
-                  0.5,
-                ),
-              ),
-              child: Align(
-                alignment: Alignment.bottomCenter,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    "Tiles",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          )
         ],
       ),
     );
