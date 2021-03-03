@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:urban/component/ProductCard.dart';
+import 'package:urban/view/home/BookingForm.dart';
 
 class SubCategory extends StatefulWidget {
   final dynamic categoryId;
@@ -39,7 +40,9 @@ class _SubCategoryState extends State<SubCategory> {
             mainAxisSpacing: 10,
             children: [
               ProductCard(
-                onClick: () {},
+                onClick: () {
+                  bookingForm();
+                },
                 imageUrl: "https://digiblade.in/urban/assets/product/tiles.jpg",
                 productName: widget.categoryId.toString(),
               ),
@@ -72,6 +75,14 @@ class _SubCategoryState extends State<SubCategory> {
           ),
         ],
       ),
+    );
+  }
+
+  bookingForm() {
+    showModalBottomSheet(
+      isScrollControlled: true,
+      context: context,
+      builder: (BuildContext context) => BookingForm(),
     );
   }
 }

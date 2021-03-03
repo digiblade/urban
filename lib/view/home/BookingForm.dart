@@ -5,9 +5,14 @@ class BookingForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Center(
-      child: Text("booking"),
-    ));
+    return SafeArea(
+      child: Scaffold(
+          appBar: AppBar(
+            title: Text("Booking"),
+          ),
+          body: Center(
+            child: Text("booking"),
+          )),
+    );
   }
 }
