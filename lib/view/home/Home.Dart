@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:urban/component/ProductCard.dart';
+import 'package:urban/view/home/SubCategory.dart';
 import '../../component/WelcomeCard.dart';
 
 class Home extends StatefulWidget {
@@ -53,7 +54,12 @@ class _HomeState extends State<Home> {
             mainAxisSpacing: 10,
             children: [
               ProductCard(
-                onClick: () {},
+                onClick: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (BuildContext context) => SubCategory()));
+                },
                 imageUrl: "https://digiblade.in/urban/assets/product/tiles.jpg",
                 productName: "Tiles",
               ),
