@@ -1,16 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:urban/component/ProductCard.dart';
-import 'package:urban/view/home/SubCategory.dart';
 import '../../component/WelcomeCard.dart';
 
-class Home extends StatefulWidget {
-  Home({Key key}) : super(key: key);
-
-  @override
-  _HomeState createState() => _HomeState();
-}
-
-class _HomeState extends State<Home> {
+class HomePage extends StatelessWidget {
+  final Function changePage;
+  HomePage({Key key, this.changePage}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -55,10 +49,7 @@ class _HomeState extends State<Home> {
             children: [
               ProductCard(
                 onClick: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (BuildContext context) => SubCategory()));
+                  changePage(1, "tiles");
                 },
                 imageUrl: "https://digiblade.in/urban/assets/product/tiles.jpg",
                 productName: "Tiles",

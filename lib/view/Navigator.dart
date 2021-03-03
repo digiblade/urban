@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import './home/Home.dart';
+import 'home/Home.dart';
+import 'home/SubCategory.dart';
 
 class NavigatorPage extends StatefulWidget {
   NavigatorPage({Key key}) : super(key: key);
@@ -9,12 +10,15 @@ class NavigatorPage extends StatefulWidget {
 }
 
 class _NavigatorPageState extends State<NavigatorPage> {
-  Widget page = Home();
+  Widget page = HomePage();
   int index = 0;
+  int data = 0;
+  dynamic subData;
   String pageName = "Home";
   setIndex(int ind) {
     setState(() {
       index = ind;
+      data = 0;
       pageName = pageNameController(ind);
     });
   }
@@ -37,12 +41,42 @@ class _NavigatorPageState extends State<NavigatorPage> {
     }
   }
 
+  Widget homePageController(int ind, dynamic dim, dynamic subDim) {
+    if (ind == 0) {
+      switch (dim) {
+        case 0:
+          return AnimatedSwitcher(
+            duration: Duration(milliseconds: 5),
+            child: HomePage(changePage: changeController),
+          );
+
+        case 1:
+          return AnimatedSwitcher(
+            duration: Duration(milliseconds: 5),
+            child: SubCategory(categoryId: subDim),
+          );
+
+        default:
+          return Text("null");
+      }
+    } else {
+      return Text("null");
+    }
+  }
+
+  changeController(dynamic subId, dynamic newSubData) {
+    setState(() {
+      data = subId;
+      subData = newSubData;
+    });
+  }
+
   Widget pageController(int ind) {
     switch (ind) {
       case 0:
         return AnimatedSwitcher(
           duration: Duration(milliseconds: 5),
-          child: Home(),
+          child: homePageController(ind, data, subData),
         );
       case 1:
         return AnimatedSwitcher(
