@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:urban/view/offer/Offers.dart';
 import 'home/Home.dart';
 import 'home/SubCategory.dart';
 
@@ -88,9 +89,7 @@ class _NavigatorPageState extends State<NavigatorPage> {
       case 2:
         return AnimatedSwitcher(
           duration: Duration(milliseconds: 5),
-          child: Center(
-            child: Text("Offers"),
-          ),
+          child: OffersPage(),
         );
       case 3:
         return AnimatedSwitcher(
