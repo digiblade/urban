@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import '../../component/OfferCard.dart';
+import '../../component/OrderCard.dart';
 
-class OffersPage extends StatefulWidget {
-  OffersPage({Key key}) : super(key: key);
+class OrdersPage extends StatefulWidget {
+  OrdersPage({Key key}) : super(key: key);
 
   @override
-  _OffersPageState createState() => _OffersPageState();
+  _OrdersPageState createState() => _OrdersPageState();
 }
 
-class _OffersPageState extends State<OffersPage> {
+class _OrdersPageState extends State<OrdersPage> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -16,22 +16,24 @@ class _OffersPageState extends State<OffersPage> {
         children: [
           Padding(
             padding: const EdgeInsets.all(16.0),
-            child: OfferCard(
+            child: OrderCard(
               title: "My Offer Title",
               subtitle: "10 % off in any product in 24 hrs.",
               offerNetworkImage:
                   "https://digiblade.in/urban/assets/offers/1.jpg",
+              date: "10/12/2021",
               onClick: () {},
             ),
           ),
           Padding(
             padding: const EdgeInsets.all(16.0),
-            child: OfferCard(
+            child: OrderCard(
               title: "My Offer Title",
               subtitle: "10 % off in any product in 24 hrs.",
               offerNetworkImage:
                   "https://digiblade.in/urban/assets/offers/1.jpg",
               onClick: () {},
+              date: "10/12/2021",
             ),
           ),
         ],

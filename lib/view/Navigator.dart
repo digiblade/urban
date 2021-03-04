@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:urban/view/offer/Offers.dart';
 import 'home/Home.dart';
 import 'home/SubCategory.dart';
+import 'order/Orders.dart';
 
 class NavigatorPage extends StatefulWidget {
   NavigatorPage({Key key}) : super(key: key);
@@ -94,9 +95,7 @@ class _NavigatorPageState extends State<NavigatorPage> {
       case 3:
         return AnimatedSwitcher(
           duration: Duration(milliseconds: 5),
-          child: Center(
-            child: Text("Orders"),
-          ),
+          child: OrdersPage(),
         );
       case 4:
         return AnimatedSwitcher(
