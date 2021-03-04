@@ -29,13 +29,13 @@ class _Button1State extends State<Button1> {
       height: widget.height,
       width: widget.width,
       child: RaisedButton(
-        color: Colors.white,
+        color: widget.color,
         onPressed: widget.onPressed,
         child: Center(
           child: Text(
             (widget.text != null) ? widget.text : "",
             style: TextStyle(
-              color: Colors.black,
+              color: widget.textColor,
             ),
           ),
         ),

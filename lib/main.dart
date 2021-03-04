@@ -72,7 +72,11 @@ class LoginPage extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: 8, left: 16, right: 16),
+                    padding: EdgeInsets.only(
+                      top: 8,
+                      left: 16,
+                      right: 16,
+                    ),
                     child: InputField(
                       controller: ctrl,
                       borderRadius: 4,
