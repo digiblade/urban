@@ -113,59 +113,57 @@ class _NavigatorPageState extends State<NavigatorPage> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text(pageName),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(pageName),
+      ),
+      body: SafeArea(
+        child: pageController(index),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        selectedIconTheme: IconThemeData(
+          color: Colors.white,
         ),
-        body: SafeArea(
-          child: pageController(index),
-        ),
-        bottomNavigationBar: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          selectedIconTheme: IconThemeData(
-            color: Colors.white,
+        selectedItemColor: Colors.white,
+        showUnselectedLabels: false,
+        unselectedIconTheme: IconThemeData(color: Colors.white),
+        backgroundColor: Color(0xff040077),
+        currentIndex: index,
+        onTap: setIndex,
+        items: [
+          BottomNavigationBarItem(
+            backgroundColor: Colors.white,
+            label: "Home",
+            icon: Icon(
+              Icons.home_outlined,
+            ),
           ),
-          selectedItemColor: Colors.white,
-          showUnselectedLabels: false,
-          unselectedIconTheme: IconThemeData(color: Colors.white),
-          backgroundColor: Color(0xff040077),
-          currentIndex: index,
-          onTap: setIndex,
-          items: [
-            BottomNavigationBarItem(
-              backgroundColor: Colors.white,
-              label: "Home",
-              icon: Icon(
-                Icons.home_outlined,
-              ),
+          BottomNavigationBarItem(
+            label: "Category",
+            icon: Icon(
+              Icons.category_outlined,
             ),
-            BottomNavigationBarItem(
-              label: "Category",
-              icon: Icon(
-                Icons.category_outlined,
-              ),
+          ),
+          BottomNavigationBarItem(
+            label: "Offer",
+            icon: Icon(
+              Icons.local_offer_outlined,
             ),
-            BottomNavigationBarItem(
-              label: "Offer",
-              icon: Icon(
-                Icons.local_offer_outlined,
-              ),
+          ),
+          BottomNavigationBarItem(
+            label: "Bookings",
+            icon: Icon(
+              Icons.bookmark_border_outlined,
             ),
-            BottomNavigationBarItem(
-              label: "Bookings",
-              icon: Icon(
-                Icons.bookmark_border_outlined,
-              ),
+          ),
+          BottomNavigationBarItem(
+            label: "Setting",
+            icon: Icon(
+              Icons.settings_outlined,
             ),
-            BottomNavigationBarItem(
-              label: "Setting",
-              icon: Icon(
-                Icons.settings_outlined,
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

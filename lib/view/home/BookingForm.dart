@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 
 class BookingForm extends StatelessWidget {
-  const BookingForm({Key key}) : super(key: key);
+  final double padding;
+  const BookingForm({
+    Key key,
+    this.padding,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return Padding(
+      padding: EdgeInsets.only(top: padding),
       child: Scaffold(
+          primary: false,
           appBar: AppBar(
             title: Text("Booking"),
           ),

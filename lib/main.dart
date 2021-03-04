@@ -25,7 +25,7 @@ class _MyAppState extends State<MyApp> {
         accentColor: Colors.white,
         // backgroundColor: Colors.black,
       ),
-      home: SafeArea(child: LoginPage()),
+      home: LoginPage(),
     );
   }
 }
