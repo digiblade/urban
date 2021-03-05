@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:urban/view/Auth/ForgetPassOtp.dart';
-import 'package:urban/view/Auth/Register.dart';
+import 'Colors.dart';
+import 'view/Auth/ForgetPassOtp.dart';
+import 'view/Auth/Register.dart';
 import 'component/Button.dart';
 import 'component/InputField.dart';
 import 'view/Navigator.dart';
@@ -21,7 +22,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        primaryColor: Color(0xff040077),
+        primaryColor: Primary_color,
         accentColor: Colors.white,
         // backgroundColor: Colors.black,
       ),

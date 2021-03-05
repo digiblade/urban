@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:urban/view/offer/Offers.dart';
+import 'package:urban/view/settings/Settings.dart';
 import 'home/Home.dart';
 import 'home/SubCategory.dart';
 import 'order/Orders.dart';
@@ -100,9 +101,7 @@ class _NavigatorPageState extends State<NavigatorPage> {
       case 4:
         return AnimatedSwitcher(
           duration: Duration(milliseconds: 5),
-          child: Center(
-            child: Text("Settings"),
-          ),
+          child: Setting(),
         );
       default:
         return Text("null");

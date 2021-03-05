@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:urban/Colors.dart';
 import 'package:urban/component/Badge.dart';
 
 class OrderCard extends StatelessWidget {
@@ -19,7 +20,7 @@ class OrderCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (onClick != null) ? onClick : () {},
+      onTap: onClick,
       child: Card(
         child: Column(
           children: [
@@ -30,7 +31,7 @@ class OrderCard extends StatelessWidget {
                 children: [
                   Expanded(
                       child: Badge(
-                    badgeColor: Colors.green.withOpacity(0.9),
+                    badgeColor: Success_color,
                     textColor: Colors.white,
                     badgeText: "Success",
                     size: 16,

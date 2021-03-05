@@ -5,18 +5,21 @@ class Badge extends StatelessWidget {
   final String badgeText;
   final Color badgeColor;
   final Color textColor;
+  final double width;
   const Badge({
     Key key,
     this.size = 16,
     this.badgeText = "Badge",
     this.badgeColor = Colors.black,
     this.textColor = Colors.white,
+    this.width = double.infinity,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: size + 16,
+      width: width,
       decoration: BoxDecoration(
         color: badgeColor,
         borderRadius: BorderRadius.circular(size),
@@ -29,6 +32,7 @@ class Badge extends StatelessWidget {
             style: TextStyle(
               color: textColor,
               fontSize: size,
+              fontWeight: FontWeight.bold,
             ),
           ),
         ),
