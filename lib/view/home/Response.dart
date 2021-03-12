@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:urban/component/Button.dart';
+import '../../component/Button.dart';
 
 class ResponsePage extends StatelessWidget {
   final double padding;

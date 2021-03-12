@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:urban/Colors.dart';
-import 'package:urban/component/Button.dart';
+import '../../Colors.dart';
+import '../../component/Button.dart';
 
 class Setting extends StatelessWidget {
   const Setting({Key key}) : super(key: key);

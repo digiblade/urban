@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:urban/component/InputField.dart';
+import '../../component/InputField.dart';
 import '../../component/Button.dart';
 import 'Response.dart';
 

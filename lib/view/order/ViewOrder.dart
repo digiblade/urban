@@ -31,7 +31,7 @@ class ViewOrder extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 16.0),
                         child: Image.network(
-                          "https://digiblade.in/urban/assets/offers/2.jpg",
+                          "https://digiblade.in/urban/urbanadmin/assets/offers/2.jpg",
                           height: 200,
                           width: double.infinity,
                           fit: BoxFit.cover,

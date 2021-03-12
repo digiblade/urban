@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:urban/component/ProductCard.dart';
-import 'package:urban/view/home/BookingForm.dart';
+import '../../component/ProductCard.dart';
+import '../../view/home/BookingForm.dart';
 import 'dart:ui';
 
 class SubCategory extends StatefulWidget {
@@ -49,37 +49,37 @@ class _SubCategoryState extends State<SubCategory> {
                     bookingForm(context, pad);
                   },
                   imageUrl:
-                      "https://digiblade.in/urban/assets/product/tiles.jpg",
+                      "https://digiblade.in/urban/urbanadmin/assets/product/tiles.jpg",
                   productName: widget.categoryId.toString(),
                 ),
                 ProductCard(
                   onClick: () {},
                   imageUrl:
-                      "https://digiblade.in/urban/assets/product/tiles.jpg",
+                      "https://digiblade.in/urban/urbanadmin/assets/product/tiles.jpg",
                   productName: "Tiles",
                 ),
                 ProductCard(
                   onClick: () {},
                   imageUrl:
-                      "https://digiblade.in/urban/assets/product/tiles.jpg",
+                      "https://digiblade.in/urban/urbanadmin/assets/product/tiles.jpg",
                   productName: "Tiles",
                 ),
                 ProductCard(
                   onClick: () {},
                   imageUrl:
-                      "https://digiblade.in/urban/assets/product/tiles.jpg",
+                      "https://digiblade.in/urban/urbanadmin/assets/product/tiles.jpg",
                   productName: "Tiles",
                 ),
                 ProductCard(
                   onClick: () {},
                   imageUrl:
-                      "https://digiblade.in/urban/assets/product/tiles.jpg",
+                      "https://digiblade.in/urban/urbanadmin/assets/product/tiles.jpg",
                   productName: "Tiles",
                 ),
                 ProductCard(
                   onClick: () {},
                   imageUrl:
-                      "https://digiblade.in/urban/assets/product/tiles.jpg",
+                      "https://digiblade.in/urban/urbanadmin/assets/product/tiles.jpg",
                   productName: "Tiles",
                 ),
               ],

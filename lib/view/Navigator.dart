@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:urban/view/offer/Offers.dart';
-import 'package:urban/view/settings/Settings.dart';
+import '../view/offer/Offers.dart';
+import '../view/settings/Settings.dart';
 import 'home/Home.dart';
 import 'home/SubCategory.dart';
 import 'order/Orders.dart';

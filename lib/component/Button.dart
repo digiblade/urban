@@ -28,8 +28,9 @@ class _Button1State extends State<Button1> {
     return Container(
       height: widget.height,
       width: widget.width,
-      child: RaisedButton(
-        color: widget.color,
+      child: ElevatedButton(
+        style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all(widget.color)),
         onPressed: widget.onPressed,
         child: Center(
           child: Text(

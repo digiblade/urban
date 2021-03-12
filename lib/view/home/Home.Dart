@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:urban/component/ProductCard.dart';
+import '../../component/ProductCard.dart';
 import '../../component/WelcomeCard.dart';
 
 class HomePage extends StatelessWidget {
@@ -51,32 +51,38 @@ class HomePage extends StatelessWidget {
                 onClick: () {
                   changePage(1, "tiles");
                 },
-                imageUrl: "https://digiblade.in/urban/assets/product/tiles.jpg",
+                imageUrl:
+                    "https://digiblade.in/urban/urbanadmin/assets/product/tiles.jpg",
                 productName: "Tiles",
               ),
               ProductCard(
                 onClick: () {},
-                imageUrl: "https://digiblade.in/urban/assets/product/tiles.jpg",
+                imageUrl:
+                    "https://digiblade.in/urban/urbanadmin/assets/product/tiles.jpg",
                 productName: "Tiles",
               ),
               ProductCard(
                 onClick: () {},
-                imageUrl: "https://digiblade.in/urban/assets/product/tiles.jpg",
+                imageUrl:
+                    "https://digiblade.in/urban/urbanadmin/assets/product/tiles.jpg",
                 productName: "Tiles",
               ),
               ProductCard(
                 onClick: () {},
-                imageUrl: "https://digiblade.in/urban/assets/product/tiles.jpg",
+                imageUrl:
+                    "https://digiblade.in/urban/urbanadmin/assets/product/tiles.jpg",
                 productName: "Tiles",
               ),
               ProductCard(
                 onClick: () {},
-                imageUrl: "https://digiblade.in/urban/assets/product/tiles.jpg",
+                imageUrl:
+                    "https://digiblade.in/urban/urbanadmin/assets/product/tiles.jpg",
                 productName: "Tiles",
               ),
               ProductCard(
                 onClick: () {},
-                imageUrl: "https://digiblade.in/urban/assets/product/tiles.jpg",
+                imageUrl:
+                    "https://digiblade.in/urban/urbanadmin/assets/product/tiles.jpg",
                 productName: "Tiles",
               ),
             ],
