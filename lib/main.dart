@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:urban/model/Velidation.dart';
 import 'Colors.dart';
+import 'model/Authmodel.dart';
 import 'view/Auth/ForgetPassOtp.dart';
 import 'view/Auth/Register.dart';
 import 'component/Button.dart';
@@ -31,9 +35,22 @@ class _MyAppState extends State<MyApp> {
   }
 }
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   LoginPage({Key key}) : super(key: key);
-  final TextEditingController ctrl = TextEditingController();
+
+  @override
+  _LoginPageState createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  final TextEditingController emailCtrl = TextEditingController();
+  final TextEditingController passCtrl = TextEditingController();
+  @override
+  void initState() {
+    super.initState();
+    checkLogin();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,7 +82,7 @@ class LoginPage extends StatelessWidget {
                       right: 16,
                     ),
                     child: InputField(
-                      controller: ctrl,
+                      controller: emailCtrl,
                       borderRadius: 4,
                       textColor: Colors.white,
                       bgColor: Colors.white.withOpacity(0.5),
@@ -79,7 +96,7 @@ class LoginPage extends StatelessWidget {
                       right: 16,
                     ),
                     child: InputField(
-                      controller: ctrl,
+                      controller: passCtrl,
                       borderRadius: 4,
                       textColor: Colors.white,
                       bgColor: Colors.white.withOpacity(0.5),
@@ -115,12 +132,7 @@ class LoginPage extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     child: Button1(
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (BuildContext context) => NavigatorPage(),
-                          ),
-                        );
+                        submitLogin(emailCtrl.text, passCtrl.text);
                       },
                       text: "Login".toUpperCase(),
                       height: 54,
@@ -153,5 +165,40 @@ class LoginPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  checkLogin() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    bool status = pref.getBool("isLogin") ?? false;
+    if (status) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (BuildContext context) => NavigatorPage(),
+        ),
+      );
+    }
+  }
+
+  submitLogin(String email, String password) async {
+    if (checkEmail(email)) {
+      Fluttertoast.showToast(msg: "Enter Valid Email");
+      return null;
+    }
+    if (password.length == 0) {
+      Fluttertoast.showToast(msg: "Please Enter Valid Password");
+      return null;
+    }
+    bool check = await checkAuth(email, password);
+    if (check) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (BuildContext context) => NavigatorPage(),
+        ),
+      );
+    } else {
+      Fluttertoast.showToast(msg: "Invalid ID/Password");
+    }
   }
 }

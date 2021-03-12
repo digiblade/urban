@@ -20,7 +20,7 @@ class _OffersPageState extends State<OffersPage> {
               title: "My Offer Title",
               subtitle: "10 % off in any product in 24 hrs.",
               offerNetworkImage:
-                  "https://digiblade.in/urban/assets/offers/1.jpg",
+                  "https://digiblade.in/urban/urbanadmin/assets/offers/1.jpg",
               onClick: () {},
             ),
           ),
@@ -30,7 +30,7 @@ class _OffersPageState extends State<OffersPage> {
               title: "My Offer Title",
               subtitle: "10 % off in any product in 24 hrs.",
               offerNetworkImage:
-                  "https://digiblade.in/urban/assets/offers/1.jpg",
+                  "https://digiblade.in/urban/urbanadmin/assets/offers/1.jpg",
               onClick: () {},
             ),
           ),
