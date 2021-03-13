@@ -45,6 +45,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final TextEditingController emailCtrl = TextEditingController();
   final TextEditingController passCtrl = TextEditingController();
+  bool flag = false;
   @override
   void initState() {
     super.initState();
@@ -128,16 +129,24 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                    child: Button1(
-                      onPressed: () {
-                        submitLogin(emailCtrl.text, passCtrl.text);
-                      },
-                      text: "Login".toUpperCase(),
-                      height: 54,
+                  if (!flag)
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                      child: Button1(
+                        onPressed: () async {
+                          setState(() {
+                            flag = true;
+                          });
+                          FocusScope.of(context).unfocus();
+                          await submitLogin(emailCtrl.text, passCtrl.text);
+                          setState(() {
+                            flag = false;
+                          });
+                        },
+                        text: "Login".toUpperCase(),
+                        height: 54,
+                      ),
                     ),
-                  ),
                 ],
               ),
             ),
@@ -181,7 +190,8 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   submitLogin(String email, String password) async {
-    if (checkEmail(email)) {
+    print(email);
+    if (!checkEmail(email) || email.length == 0) {
       Fluttertoast.showToast(msg: "Enter Valid Email");
       return null;
     }

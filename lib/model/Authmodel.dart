@@ -22,7 +22,7 @@ checkAuth(String email, String password) async {
     print(data);
   }
   if (status) {
-    pref.setString("user_id", email);
+    pref.setString("userId", email);
     pref.setBool("isLogin", true);
   }
   return status;

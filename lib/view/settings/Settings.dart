@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../Colors.dart';
 import '../../component/Button.dart';
+import '../../main.dart';
 
 class Setting extends StatelessWidget {
   const Setting({Key key}) : super(key: key);
@@ -70,6 +72,17 @@ class Setting extends StatelessWidget {
                       textColor: Colors.white,
                     ),
                   ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Button1(
+                      onPressed: () {
+                        logout(context);
+                      },
+                      color: Primary_color,
+                      text: "Logout",
+                      textColor: Colors.white,
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -83,6 +96,18 @@ class Setting extends StatelessWidget {
           ),
         )
       ],
+    );
+  }
+
+  logout(context) async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    pref.remove("isLogin");
+    pref.remove("userId");
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (BuildContext context) => MyApp(),
+      ),
     );
   }
 }

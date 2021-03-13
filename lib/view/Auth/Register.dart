@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:urban/component/Button.dart';
 import 'package:urban/component/InputField.dart';
 
 import '../../main.dart';
 
 class RegisterPage extends StatelessWidget {
-  final TextEditingController ctrl = TextEditingController();
+  final TextEditingController userCtrl = TextEditingController();
+  final TextEditingController emailCtrl = TextEditingController();
+  final TextEditingController mobileCtrl = TextEditingController();
+  final TextEditingController passwordCtrl = TextEditingController();
+  final TextEditingController confirmPassCtrl = TextEditingController();
+
   RegisterPage({Key key}) : super(key: key);
 
   @override
@@ -39,7 +45,7 @@ class RegisterPage extends StatelessWidget {
                       right: 16,
                     ),
                     child: InputField(
-                      controller: ctrl,
+                      controller: userCtrl,
                       borderRadius: 4,
                       textColor: Colors.white,
                       bgColor: Colors.white.withOpacity(0.5),
@@ -49,7 +55,7 @@ class RegisterPage extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.only(top: 8, left: 16, right: 16),
                     child: InputField(
-                      controller: ctrl,
+                      controller: emailCtrl,
                       borderRadius: 4,
                       textColor: Colors.white,
                       bgColor: Colors.white.withOpacity(0.5),
@@ -59,7 +65,7 @@ class RegisterPage extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.only(top: 8, left: 16, right: 16),
                     child: InputField(
-                      controller: ctrl,
+                      controller: mobileCtrl,
                       borderRadius: 4,
                       textColor: Colors.white,
                       bgColor: Colors.white.withOpacity(0.5),
@@ -69,7 +75,7 @@ class RegisterPage extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.only(top: 8, left: 16, right: 16),
                     child: InputField(
-                      controller: ctrl,
+                      controller: passwordCtrl,
                       borderRadius: 4,
                       textColor: Colors.white,
                       bgColor: Colors.white.withOpacity(0.5),
@@ -80,7 +86,7 @@ class RegisterPage extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.only(top: 8, left: 16, right: 16),
                     child: InputField(
-                      controller: ctrl,
+                      controller: confirmPassCtrl,
                       borderRadius: 4,
                       textColor: Colors.white,
                       bgColor: Colors.white.withOpacity(0.5),
@@ -94,7 +100,16 @@ class RegisterPage extends StatelessWidget {
                       vertical: 24,
                     ),
                     child: Button1(
-                      onPressed: () {},
+                      onPressed: () async {
+                        bool response = await checkRegister(
+                          userCtrl.text,
+                          emailCtrl.text,
+                          mobileCtrl.text,
+                          passwordCtrl.text,
+                          confirmPassCtrl.text,
+                        );
+                        if (response) {}
+                      },
                       text: "Register".toUpperCase(),
                       height: 54,
                     ),
@@ -126,5 +141,39 @@ class RegisterPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  checkRegister(
+    String username,
+    String email,
+    String mobile,
+    String password,
+    String confirmPass,
+  ) async {
+    bool response = true;
+    if (username.length == 0 ||
+        email.length == 0 ||
+        mobile.length == 0 ||
+        password.length == 0 ||
+        confirmPass.length == 0) {
+      Fluttertoast.showToast(msg: "All Fields are required");
+      response = false;
+    } else {
+      if (password != confirmPass) {
+        Fluttertoast.showToast(msg: "Password And  Confirm Password Not");
+        response = false;
+      }
+    }
+    return response;
+  }
+
+  submitRegister(
+    String username,
+    String email,
+    String mobile,
+    String password,
+    String confirmPass,
+  ) async {
+    bool response = await registerUser(){}
   }
 }

@@ -1,2 +1,2 @@
-String api = "http://locahost/urbanadmin/api/";
+String api = "https://digiblade.in/urban/urbanadmin/api/";
 String imageUrl = "";
