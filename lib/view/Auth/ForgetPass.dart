@@ -59,7 +59,7 @@ class ForgetPass extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     child: Button1(
                       onPressed: () {},
-                      text: "Register".toUpperCase(),
+                      text: "Verify".toUpperCase(),
                       height: 54,
                     ),
                   ),
@@ -81,7 +81,7 @@ class ForgetPass extends StatelessWidget {
                   },
                   text: "Already have account?",
                   textColor: Colors.white.withOpacity(0.7),
-                  clickText: "SignUp here",
+                  clickText: "SignIn here",
                   clickColor: Colors.blue,
                 ),
               ),

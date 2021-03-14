@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:urban/component/Button.dart';
 import 'package:urban/component/InputField.dart';
+import 'package:urban/model/Authmodel.dart';
 
 import '../../main.dart';
 
 class ForgetPassOtp extends StatelessWidget {
   ForgetPassOtp({Key key}) : super(key: key);
-  final TextEditingController ctrl = TextEditingController();
+  final TextEditingController emailCtrl = TextEditingController();
+  final TextEditingController otpCtrl = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,7 +42,7 @@ class ForgetPassOtp extends StatelessWidget {
                       right: 16,
                     ),
                     child: InputField(
-                      controller: ctrl,
+                      controller: emailCtrl,
                       borderRadius: 4,
                       textColor: Colors.white,
                       bgColor: Colors.white.withOpacity(0.5),
@@ -50,8 +54,15 @@ class ForgetPassOtp extends StatelessWidget {
                     child: Align(
                       alignment: Alignment.centerRight,
                       child: TextButton(
-                        onPressed: () {
-                          print(ctrl.text);
+                        onPressed: () async {
+                          bool response = await resendOtp(emailCtrl.text);
+                          FocusScope.of(context).unfocus();
+                          if (response) {
+                            Fluttertoast.showToast(
+                                msg: "Otp Send Successfully");
+                          } else {
+                            Fluttertoast.showToast(msg: "Something went wrong");
+                          }
                         },
                         child: Text(
                           "Generate OTP.",
@@ -71,7 +82,7 @@ class ForgetPassOtp extends StatelessWidget {
                       bottom: 8,
                     ),
                     child: InputField(
-                      controller: ctrl,
+                      controller: otpCtrl,
                       borderRadius: 4,
                       textColor: Colors.white,
                       bgColor: Colors.white.withOpacity(0.5),
