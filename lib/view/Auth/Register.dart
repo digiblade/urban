@@ -1,18 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:urban/component/Button.dart';
-import 'package:urban/component/InputField.dart';
-
+import '../../component/Button.dart';
+import '../../component/InputField.dart';
+import '../../model/Authmodel.dart';
 import '../../main.dart';
 
-class RegisterPage extends StatelessWidget {
-  final TextEditingController userCtrl = TextEditingController();
-  final TextEditingController emailCtrl = TextEditingController();
-  final TextEditingController mobileCtrl = TextEditingController();
-  final TextEditingController passwordCtrl = TextEditingController();
-  final TextEditingController confirmPassCtrl = TextEditingController();
-
+class RegisterPage extends StatefulWidget {
   RegisterPage({Key key}) : super(key: key);
+
+  @override
+  _RegisterPageState createState() => _RegisterPageState();
+}
+
+class _RegisterPageState extends State<RegisterPage> {
+  final TextEditingController userCtrl = TextEditingController();
+
+  final TextEditingController emailCtrl = TextEditingController();
+
+  final TextEditingController mobileCtrl = TextEditingController();
+
+  final TextEditingController passwordCtrl = TextEditingController();
+
+  final TextEditingController confirmPassCtrl = TextEditingController();
+  bool flag = false;
 
   @override
   Widget build(BuildContext context) {
@@ -94,26 +104,43 @@ class RegisterPage extends StatelessWidget {
                       hintText: "Confirm Password",
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 16.0,
-                      vertical: 24,
+                  if (!flag)
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 16.0,
+                        vertical: 24,
+                      ),
+                      child: Button1(
+                        onPressed: () async {
+                          FocusScope.of(context).unfocus();
+                          setState(() {
+                            flag = true;
+                          });
+                          bool response = await checkRegister(
+                            userCtrl.text,
+                            emailCtrl.text,
+                            mobileCtrl.text,
+                            passwordCtrl.text,
+                            confirmPassCtrl.text,
+                          );
+                          if (response) {
+                            submitRegister(
+                              userCtrl.text,
+                              emailCtrl.text,
+                              mobileCtrl.text,
+                              passwordCtrl.text,
+                              confirmPassCtrl.text,
+                              context,
+                            );
+                          }
+                          setState(() {
+                            flag = false;
+                          });
+                        },
+                        text: "Register".toUpperCase(),
+                        height: 54,
+                      ),
                     ),
-                    child: Button1(
-                      onPressed: () async {
-                        bool response = await checkRegister(
-                          userCtrl.text,
-                          emailCtrl.text,
-                          mobileCtrl.text,
-                          passwordCtrl.text,
-                          confirmPassCtrl.text,
-                        );
-                        if (response) {}
-                      },
-                      text: "Register".toUpperCase(),
-                      height: 54,
-                    ),
-                  ),
                 ],
               ),
             ),
@@ -173,7 +200,17 @@ class RegisterPage extends StatelessWidget {
     String mobile,
     String password,
     String confirmPass,
+    BuildContext context,
   ) async {
-    bool response = await registerUser(){}
+    bool response = await registerUser(
+      username,
+      email,
+      mobile,
+      password,
+      context,
+    );
+    if (!response) {
+      Fluttertoast.showToast(msg: "Something went wrong");
+    }
   }
 }

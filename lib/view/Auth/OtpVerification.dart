@@ -1,11 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import '../../model/Authmodel.dart';
 import '../../component/Button.dart';
 import '../../component/InputField.dart';
 import '../../main.dart';
 
-class OtpVarification extends StatelessWidget {
-  OtpVarification({Key key}) : super(key: key);
+class OtpVarification extends StatefulWidget {
+  final String email;
+  OtpVarification({
+    Key key,
+    this.email = "",
+  }) : super(key: key);
+
+  @override
+  _OtpVarificationState createState() => _OtpVarificationState();
+}
+
+class _OtpVarificationState extends State<OtpVarification> {
   final TextEditingController ctrl = TextEditingController();
+  bool flag = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,8 +63,15 @@ class OtpVarification extends StatelessWidget {
                     child: Align(
                       alignment: Alignment.centerRight,
                       child: TextButton(
-                        onPressed: () {
-                          print(ctrl.text);
+                        onPressed: () async {
+                          bool response = await resendOtp(widget.email);
+                          FocusScope.of(context).unfocus();
+                          if (response) {
+                            Fluttertoast.showToast(
+                                msg: "Otp Send Successfully");
+                          } else {
+                            Fluttertoast.showToast(msg: "Something went wrong");
+                          }
                         },
                         child: Text(
                           "Resend OTP.",
@@ -62,14 +83,30 @@ class OtpVarification extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                    child: Button1(
-                      onPressed: () {},
-                      text: "Verify".toUpperCase(),
-                      height: 54,
+                  if (!flag)
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                      child: Button1(
+                        onPressed: () async {
+                          setState(() {
+                            flag = true;
+                          });
+                          bool response = await otpVerification(
+                            widget.email,
+                            ctrl.text,
+                            context,
+                          );
+                          if (!response) {
+                            Fluttertoast.showToast(msg: "Wrong Otp");
+                          }
+                          setState(() {
+                            flag = false;
+                          });
+                        },
+                        text: "Verify".toUpperCase(),
+                        height: 54,
+                      ),
                     ),
-                  ),
                 ],
               ),
             ),
