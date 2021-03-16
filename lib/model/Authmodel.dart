@@ -2,10 +2,12 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:urban/view/Auth/OtpVerification.dart';
 import "Url.dart";
 import '../view/Navigator.dart';
+import 'Velidation.dart';
 
 checkAuth(String email, String password) async {
   bool status = false;
@@ -120,4 +122,37 @@ Future<bool> otpVerification(
     );
   }
   return status;
+}
+
+forgetPass(String email, String otp, String password) async {
+  bool status = false;
+  Dio dio = Dio();
+  FormData form = FormData.fromMap({
+    "otp": otp,
+    "email": email,
+    "password": password,
+  });
+  dynamic response = await dio.post(api + "auth/forgetPassword", data: form);
+  if (response.statusCode == 200) {
+    dynamic data = json.decode(response.data);
+    status = data['resposne'];
+  }
+  return status;
+}
+
+forgetPassword(String email, String otp, String pass, String confirm) {
+  if (!checkEmail(email)) {
+    Fluttertoast.showToast(msg: "Enter Valid Email");
+    return false;
+  }
+  if (otp.length == 0) {
+    Fluttertoast.showToast(msg: "Enter Valid OTP");
+    return false;
+  }
+  if (pass.length < 6 || (pass != confirm)) {
+    Fluttertoast.showToast(
+        msg: "Enter Valid Password. Password should be minimum 6 character");
+    return false;
+  }
+  return true;
 }
