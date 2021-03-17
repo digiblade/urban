@@ -117,13 +117,15 @@ class _ForgetPassOtpState extends State<ForgetPassOtp> {
                     child: InputField(
                       controller: passCtrl,
                       borderRadius: 4,
+                      isPassword: true,
                       textColor: Colors.white,
                       bgColor: Colors.white.withOpacity(0.5),
                       hintText: "Password",
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: 8, left: 16, right: 16),
+                    padding:
+                        EdgeInsets.only(top: 8, bottom: 8, left: 16, right: 16),
                     child: InputField(
                       controller: confirmCtrl,
                       borderRadius: 4,

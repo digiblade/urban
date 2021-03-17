@@ -135,7 +135,7 @@ forgetPass(String email, String otp, String password) async {
   dynamic response = await dio.post(api + "auth/forgetPassword", data: form);
   if (response.statusCode == 200) {
     dynamic data = json.decode(response.data);
-    status = data['resposne'];
+    status = data['response'];
   }
   return status;
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:urban/model/Categorymodel.dart';
 import '../../component/ProductCard.dart';
 import '../../view/home/BookingForm.dart';
 import 'dart:ui';
@@ -36,53 +37,38 @@ class _SubCategoryState extends State<SubCategory> {
                 ),
               ),
             ),
-            GridView.count(
-              shrinkWrap: true,
-              crossAxisCount: 2,
-              primary: false,
-              padding: const EdgeInsets.all(20),
-              crossAxisSpacing: 10,
-              mainAxisSpacing: 10,
-              children: [
-                ProductCard(
-                  onClick: () {
-                    bookingForm(context, pad);
-                  },
-                  imageUrl:
-                      "https://digiblade.in/urban/urbanadmin/assets/product/tiles.jpg",
-                  productName: widget.categoryId.toString(),
-                ),
-                ProductCard(
-                  onClick: () {},
-                  imageUrl:
-                      "https://digiblade.in/urban/urbanadmin/assets/product/tiles.jpg",
-                  productName: "Tiles",
-                ),
-                ProductCard(
-                  onClick: () {},
-                  imageUrl:
-                      "https://digiblade.in/urban/urbanadmin/assets/product/tiles.jpg",
-                  productName: "Tiles",
-                ),
-                ProductCard(
-                  onClick: () {},
-                  imageUrl:
-                      "https://digiblade.in/urban/urbanadmin/assets/product/tiles.jpg",
-                  productName: "Tiles",
-                ),
-                ProductCard(
-                  onClick: () {},
-                  imageUrl:
-                      "https://digiblade.in/urban/urbanadmin/assets/product/tiles.jpg",
-                  productName: "Tiles",
-                ),
-                ProductCard(
-                  onClick: () {},
-                  imageUrl:
-                      "https://digiblade.in/urban/urbanadmin/assets/product/tiles.jpg",
-                  productName: "Tiles",
-                ),
-              ],
+            FutureBuilder(
+              future: getSubCategory(widget.categoryId),
+              builder: (BuildContext context, AsyncSnapshot snapshot) {
+                if (snapshot.hasData) {
+                  List<SubCategoryData> data = snapshot.data;
+                  if (data.length > 0) {
+                    return GridView.count(
+                      shrinkWrap: true,
+                      crossAxisCount: 2,
+                      primary: false,
+                      padding: const EdgeInsets.all(20),
+                      crossAxisSpacing: 10,
+                      mainAxisSpacing: 10,
+                      children: data.map((e) {
+                        return ProductCard(
+                          onClick: () {
+                            bookingForm(context, pad);
+                          },
+                          imageUrl: e.imagePath,
+                          productName: e.name,
+                        );
+                      }).toList(),
+                    );
+                  } else {
+                    return Center(
+                      child: Text("No Sub Category Found"),
+                    );
+                  }
+                } else {
+                  return CircularProgressIndicator();
+                }
+              },
             ),
           ],
         ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:urban/model/Categorymodel.dart';
 import '../../component/ProductCard.dart';
 import '../../component/WelcomeCard.dart';
 
@@ -39,53 +40,40 @@ class HomePage extends StatelessWidget {
               ],
             ),
           ),
-          GridView.count(
-            shrinkWrap: true,
-            crossAxisCount: 2,
-            primary: false,
-            padding: const EdgeInsets.all(20),
-            crossAxisSpacing: 10,
-            mainAxisSpacing: 10,
-            children: [
-              ProductCard(
-                onClick: () {
-                  changePage(1, "tiles");
-                },
-                imageUrl:
-                    "https://digiblade.in/urban/urbanadmin/assets/product/tiles.jpg",
-                productName: "Tiles",
-              ),
-              ProductCard(
-                onClick: () {},
-                imageUrl:
-                    "https://digiblade.in/urban/urbanadmin/assets/product/tiles.jpg",
-                productName: "Tiles",
-              ),
-              ProductCard(
-                onClick: () {},
-                imageUrl:
-                    "https://digiblade.in/urban/urbanadmin/assets/product/tiles.jpg",
-                productName: "Tiles",
-              ),
-              ProductCard(
-                onClick: () {},
-                imageUrl:
-                    "https://digiblade.in/urban/urbanadmin/assets/product/tiles.jpg",
-                productName: "Tiles",
-              ),
-              ProductCard(
-                onClick: () {},
-                imageUrl:
-                    "https://digiblade.in/urban/urbanadmin/assets/product/tiles.jpg",
-                productName: "Tiles",
-              ),
-              ProductCard(
-                onClick: () {},
-                imageUrl:
-                    "https://digiblade.in/urban/urbanadmin/assets/product/tiles.jpg",
-                productName: "Tiles",
-              ),
-            ],
+          FutureBuilder(
+            future: getCategory(),
+            builder: (BuildContext context, AsyncSnapshot snapshot) {
+              if (snapshot.hasData) {
+                List<Category> data = snapshot.data;
+                if (data.length > 0) {
+                  return GridView.count(
+                    shrinkWrap: true,
+                    crossAxisCount: 2,
+                    primary: false,
+                    padding: const EdgeInsets.all(20),
+                    crossAxisSpacing: 10,
+                    mainAxisSpacing: 10,
+                    children: data.map((category) {
+                      return ProductCard(
+                        onClick: () {
+                          changePage(1, category.postid);
+                        },
+                        imageUrl: category.imagePath,
+                        productName: category.name,
+                      );
+                    }).toList(),
+                  );
+                } else {
+                  return Center(
+                    child: Text("No Category found"),
+                  );
+                }
+              } else {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+            },
           ),
         ],
       ),
