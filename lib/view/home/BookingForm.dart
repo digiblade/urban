@@ -5,9 +5,11 @@ import 'Response.dart';
 
 class BookingForm extends StatelessWidget {
   final double padding;
+  final dynamic subcategory;
   const BookingForm({
     Key key,
     this.padding,
+    this.subcategory,
   }) : super(key: key);
 
   @override
