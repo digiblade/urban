@@ -27,7 +27,7 @@ class _BookingFormState extends State<BookingForm> {
     if (type == 0) {
       pickedFile = await ImagePicker.pickImage(source: ImageSource.camera);
     } else {
-      pickedFile = await ImagePicker.pickImage(source: ImageSource.camera);
+      pickedFile = await ImagePicker.pickImage(source: ImageSource.gallery);
     }
     setState(() {
       if (pickedFile != null) {
@@ -49,10 +49,16 @@ class _BookingFormState extends State<BookingForm> {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              Center(
-                child: image == null
-                    ? Text('No image selected.')
-                    : Image.file(image),
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 8.0,
+                  vertical: 16,
+                ),
+                child: Center(
+                  child: image == null
+                      ? Text('No image selected.')
+                      : Image.file(image),
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(
@@ -64,6 +70,20 @@ class _BookingFormState extends State<BookingForm> {
                     getImage(0);
                   },
                   text: "Take photo",
+                  color: Colors.black,
+                  textColor: Colors.white,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16.0,
+                  vertical: 16,
+                ),
+                child: Button1(
+                  onPressed: () {
+                    getImage(1);
+                  },
+                  text: "Import From Gallary",
                   color: Colors.black,
                   textColor: Colors.white,
                 ),
