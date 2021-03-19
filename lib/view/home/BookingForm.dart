@@ -21,6 +21,8 @@ class BookingForm extends StatefulWidget {
 
 class _BookingFormState extends State<BookingForm> {
   File image;
+  final TextEditingController addressCtrl = TextEditingController();
+  final TextEditingController notesCtrl = TextEditingController();
   final picker = ImagePicker();
   Future getImage(int type) async {
     dynamic pickedFile;
@@ -94,6 +96,7 @@ class _BookingFormState extends State<BookingForm> {
                   vertical: 16,
                 ),
                 child: InputField(
+                  controller: addressCtrl,
                   borderColor: Colors.black.withOpacity(0.2),
                   borderRadius: 4,
                   maxLine: 4,
@@ -107,6 +110,7 @@ class _BookingFormState extends State<BookingForm> {
                   vertical: 16,
                 ),
                 child: InputField(
+                  controller: notesCtrl,
                   borderColor: Colors.black.withOpacity(0.2),
                   borderRadius: 4,
                   maxLine: 4,
